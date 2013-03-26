@@ -31,6 +31,7 @@
 		<?php echo $form->radioButtons($patient,'gender','gender')?>
 		<?php echo $form->dropDownList($patient,'ethnic_group_id',CHtml::listData(EthnicGroup::model()->findAll(array('order'=>'name')),'id','name'))?>
 		<?php echo $form->dateOfBirth($patient,'dob')?>
+		<?php echo $form->textField($patient,'age_range')?>
 		<?php echo $form->textField($patient,'title')?>
 		<?php echo $form->textField($patient,'first_name')?>
 		<?php echo $form->textField($patient,'last_name')?>
