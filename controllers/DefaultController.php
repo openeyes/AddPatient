@@ -11,6 +11,8 @@ class DefaultController extends BaseController
 		if (!empty($_POST['Patient'])) {
 			$patient->loadFrom($_POST['Patient']);
 
+			$patient->hos_num = str_pad($patient->hos_num,7,'0',STR_PAD_LEFT);
+
 			if (!$patient->validate(null,true,array('Contact','Address'))) {
 				foreach ($patient->getErrors() as $errors) {
 					foreach ($errors as $error) {
