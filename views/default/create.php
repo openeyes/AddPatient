@@ -30,19 +30,18 @@
 		<?php echo $form->textField($patient,'nhs_num')?>
 		<?php echo $form->radioButtons($patient,'gender','gender')?>
 		<?php echo $form->dropDownList($patient,'ethnic_group_id',CHtml::listData(EthnicGroup::model()->findAll(array('order'=>'name')),'id','name'))?>
-		<?php echo $form->dateOfBirth($patient,'dob')?>
-		<?php echo $form->textField($patient,'age_range')?>
-		<?php echo $form->textField($patient,'title')?>
-		<?php echo $form->textField($patient,'first_name')?>
-		<?php echo $form->textField($patient,'last_name')?>
-		<?php echo $form->textField($patient,'address1')?>
-		<?php echo $form->textField($patient,'address2')?>
-		<?php echo $form->textField($patient,'city')?>
-		<?php echo $form->textField($patient,'county')?>
-		<?php echo $form->textField($patient,'postcode')?>
-		<?php echo $form->dropDownList($patient,'country_id',CHtml::listData(Country::model()->findAll(array('order'=>'name')),'id','name'))?>
-		<?php echo $form->textField($patient,'primary_phone')?>
-		<?php echo $form->textField($patient,'email')?>
+		<?php echo $form->datePicker($patient,'dob',array(),array('size'=>11))?>
+		<?php echo $form->textField($contact,'title')?>
+		<?php echo $form->textField($contact,'first_name')?>
+		<?php echo $form->textField($contact,'last_name')?>
+		<?php echo $form->textField($address,'address1')?>
+		<?php echo $form->textField($address,'address2')?>
+		<?php echo $form->textField($address,'city')?>
+		<?php echo $form->textField($address,'county')?>
+		<?php echo $form->textField($address,'postcode')?>
+		<?php echo $form->dropDownList($address,'country_id',CHtml::listData(Country::model()->findAll(array('order'=>'name')),'id','name'))?>
+		<?php echo $form->textField($contact,'primary_phone')?>
+		<?php echo $form->textField($address,'email')?>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
 		<div class="btngroup padtop">
 			<?php echo EventAction::button('Save', 'save', array('id' => 'p_save', 'colour' => 'green'))->toHtml()?>
