@@ -6,7 +6,7 @@ class DefaultController extends BaseController
 
 	public function actionCreate()
 	{
-		if (isset($_POST['patient_id'])) {
+		if (@$_POST['patient_id']) {
 			$patient = Patient::model()->findByPk($_POST['patient_id']);
 			$contact = $patient->contact;
 			$address = $patient->contact->address;
