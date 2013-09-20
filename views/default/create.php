@@ -23,7 +23,7 @@
 		'enableAjaxValidation'=>false,
 		'htmlOptions' => array('class'=>'sliding'),
 	))?>
-	<input type="hidden" name="patient_id" value="<?php echo $this->patient->id?>" />
+	<input type="hidden" name="patient_id" value="<?php echo $this->patient ? $this->patient->id : ''?>" />
 	<div id="event_content" class="whiteBox">
 		<h4 class="elementTypeName">Add Patient</h4>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
