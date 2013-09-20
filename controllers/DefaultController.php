@@ -2,10 +2,24 @@
 
 class DefaultController extends BaseController
 {
-	public function actionCreate() {
-		$patient = new Patient;
-		$contact = new Contact;
-		$address = new Address;
+	public $patient;
+
+	public function actionCreate()
+	{
+		if (isset($_POST['patient_id'])) {
+			$patient = Patient::model()->findByPk($_POST['patient_id']);
+			$contact = $patient->contact;
+			$address = $patient->contact->address;
+		} elseif ($this->patient) {
+			$patient = $this->patient;
+			$contact = $this->patient->contact;
+			$address = $this->patient->contact->address;
+		} else {
+			$patient = new Patient;
+			$contact = new Contact;
+			$address = new Address;
+		}
+
 		if (Yii::app()->params['default_country']) {
 			$address->country_id = Country::model()->find('name=?',array(Yii::app()->params['default_country']))->id;
 		} else {
@@ -15,8 +29,6 @@ class DefaultController extends BaseController
 		$form_errors = array();
 
 		if (!empty($_POST['Patient'])) {
-			//die("<pre>".print_r($_POST,true));
-
 			$contact = new Contact;
 			$contact->attributes = $_POST['Contact'];
 
@@ -27,7 +39,7 @@ class DefaultController extends BaseController
 					}
 				}
 			} else {
-				$patient->attributes = $_POST['Patient'];
+				$patient->attributes = Helper::convertNHS2MySQL($_POST['Patient']);
 				$patient->hos_num = str_pad($patient->hos_num,7,'0',STR_PAD_LEFT);
 				$patient->contact_id = $contact->id;
 
@@ -72,5 +84,14 @@ class DefaultController extends BaseController
 			),
 			false, true
 		);
+	}
+
+	public function actionUpdate($id)
+	{
+		if (!$this->patient = Patient::model()->findByPk($id)) {
+			throw new Exception("Unable to find patient: $id");
+		}
+
+		$this->actionCreate();
 	}
 }

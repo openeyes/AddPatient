@@ -23,12 +23,13 @@
 		'enableAjaxValidation'=>false,
 		'htmlOptions' => array('class'=>'sliding'),
 	))?>
+	<input type="hidden" name="patient_id" value="<?php echo $this->patient->id?>" />
 	<div id="event_content" class="whiteBox">
 		<h4 class="elementTypeName">Add Patient</h4>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
 		<?php echo $form->textField($patient,'hos_num')?>
 		<?php echo $form->textField($patient,'nhs_num')?>
-		<?php echo $form->radioButtons($patient,'gender','gender')?>
+		<?php echo $form->radioButtons($patient,'gender',array('M'=>'Male','F'=>'Female'))?>
 		<?php echo $form->dropDownList($patient,'ethnic_group_id',CHtml::listData(EthnicGroup::model()->findAll(array('order'=>'name')),'id','name'))?>
 		<?php echo $form->datePicker($patient,'dob',array(),array('size'=>11))?>
 		<?php echo $form->textField($contact,'title')?>
