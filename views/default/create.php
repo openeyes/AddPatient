@@ -31,7 +31,7 @@
 		<?php echo $form->textField($patient,'nhs_num')?>
 		<?php echo $form->radioButtons($patient,'gender',array('M'=>'Male','F'=>'Female'))?>
 		<?php echo $form->dropDownList($patient,'ethnic_group_id',CHtml::listData(EthnicGroup::model()->findAll(array('order'=>'name')),'id','name'))?>
-		<?php echo $form->datePicker($patient,'dob',array(),array('size'=>11))?>
+		<?php echo $form->datePicker($patient,'dob',array(),array('size'=>11,'null'=>true))?>
 		<?php echo $form->textField($contact,'title')?>
 		<?php echo $form->textField($contact,'first_name')?>
 		<?php echo $form->textField($contact,'last_name')?>
