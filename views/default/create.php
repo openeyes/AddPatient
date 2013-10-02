@@ -42,6 +42,7 @@
 		<?php echo $form->textField($address,'postcode')?>
 		<?php echo $form->dropDownList($address,'country_id',CHtml::listData(Country::model()->findAll(array('order'=>'name')),'id','name'))?>
 		<?php echo $form->textField($contact,'primary_phone')?>
+		<?php echo $form->textField($contact,'secondary_phone')?>
 		<?php echo $form->textField($address,'email')?>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
 		<div class="btngroup padtop">
