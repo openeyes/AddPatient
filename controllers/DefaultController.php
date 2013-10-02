@@ -39,6 +39,10 @@ class DefaultController extends BaseController
 					}
 				}
 			} else {
+				if (!preg_match('/^[0-9]+ [A-Z][a-z]{2} [0-9]{4}$/',$_POST['Patient']['dob']) && strtotime($_POST['Patient']['dob'])) {
+					$_POST['Patient']['dob'] = date('j M Y',strtotime($_POST['Patient']['dob']));
+				}
+
 				$patient->attributes = Helper::convertNHS2MySQL($_POST['Patient']);
 				$patient->hos_num = str_pad($patient->hos_num,7,'0',STR_PAD_LEFT);
 				$patient->contact_id = $contact->id;
