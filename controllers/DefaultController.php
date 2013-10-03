@@ -4,6 +4,18 @@ class DefaultController extends BaseController
 {
 	public $patient;
 
+	public function accessRules()
+	{
+		return array(
+			// Level 3 or above can do anything
+			array('allow',
+				'expression' => 'BaseController::checkUserLevel(4)',
+			),
+			// Deny anything else (default rule allows authenticated users)
+			array('deny'),
+		);
+	}
+
 	public function actionCreate()
 	{
 		if (@$_POST['patient_id']) {
