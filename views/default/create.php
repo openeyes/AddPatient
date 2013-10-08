@@ -27,24 +27,24 @@
 	<div id="event_content" class="whiteBox">
 		<h4 class="elementTypeName">Add Patient</h4>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
-		<?php echo $form->textField($patient,'hos_num')?>
-		<?php echo $form->textField($patient,'nhs_num')?>
+		<?php echo $form->textField($patient,'hos_num',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($patient,'nhs_num',array('autocomplete'=>'off'))?>
 		<?php echo $form->radioButtons($patient,'gender',array('M'=>'Male','F'=>'Female'))?>
 		<?php echo $form->dropDownList($patient,'ethnic_group_id',CHtml::listData(EthnicGroup::model()->findAll(array('order'=>'name')),'id','name'))?>
 		<?php echo $form->checkBox($patient,'translator_needed')?>
 		<?php echo $form->datePicker($patient,'dob',array(),array('size'=>11,'null'=>true))?>
-		<?php echo $form->textField($contact,'title')?>
-		<?php echo $form->textField($contact,'first_name')?>
-		<?php echo $form->textField($contact,'last_name')?>
-		<?php echo $form->textField($address,'address1')?>
-		<?php echo $form->textField($address,'address2')?>
-		<?php echo $form->textField($address,'city')?>
-		<?php echo $form->textField($address,'county')?>
-		<?php echo $form->textField($address,'postcode')?>
+		<?php echo $form->textField($contact,'title',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($contact,'first_name',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($contact,'last_name',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'address1',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'address2',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'city',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'county',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'postcode',array('autocomplete'=>'off'))?>
 		<?php echo $form->dropDownList($address,'country_id',CHtml::listData(Country::model()->findAll(array('order'=>'name')),'id','name'))?>
-		<?php echo $form->textField($contact,'primary_phone')?>
-		<?php echo $form->textField($contact,'secondary_phone')?>
-		<?php echo $form->textField($address,'email')?>
+		<?php echo $form->textField($contact,'primary_phone',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($contact,'secondary_phone',array('autocomplete'=>'off'))?>
+		<?php echo $form->textField($address,'email',array('autocomplete'=>'off'))?>
 		<?php echo $this->renderPartial('//elements/form_errors',array('errors'=>$errors))?>
 		<div class="btngroup padtop">
 			<?php echo EventAction::button('Save', 'save', array('id' => 'p_save', 'colour' => 'green'))->toHtml()?>
