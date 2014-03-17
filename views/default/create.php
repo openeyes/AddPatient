@@ -41,7 +41,7 @@
 		<?php echo $form->textField($address,'city',array('autocomplete'=>'off'))?>
 		<?php echo $form->textField($address,'county',array('autocomplete'=>'off'))?>
 		<?php echo $form->textField($address,'postcode',array('autocomplete'=>'off'))?>
-		<?php echo $form->dropDownList($address,'country_id',CHtml::listData(Country::model()->findAll(array('order'=>'name')),'id','name'))?>
+		<?php echo $form->dropDownList($address,'country_id',CHtml::listData(Country::model()->notDeleted()->findAll(array('order'=>'name')),'id','name'))?>
 		<?php echo $form->textField($contact,'primary_phone',array('autocomplete'=>'off'))?>
 		<?php echo $form->textField($contact,'secondary_phone',array('autocomplete'=>'off'))?>
 		<?php echo $form->textField($address,'email',array('autocomplete'=>'off'))?>
