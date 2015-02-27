@@ -9,10 +9,9 @@ class DefaultController extends BaseController
 		return array(
 			// Level 3 or above can do anything
 			array('allow',
-				'expression' => 'BaseController::checkUserLevel(4)',
+		//		'expression' => 'BaseController::checkUserLevel(4)',
 			),
 			// Deny anything else (default rule allows authenticated users)
-			array('deny'),
 		);
 	}
 
@@ -77,8 +76,7 @@ class DefaultController extends BaseController
 						$address = new Address;
 						$address->attributes = $_POST['Address'];
 						$address->address_type_id = $address_type->id;
-						$address->parent_class = 'Contact';
-						$address->parent_id = $contact->id;
+						$address->contact_id = $contact->id;
 
 						if (!$address->save()) {
 							throw new Exception("Unable to save patient address: ".print_r($address->getErrors(),true));
